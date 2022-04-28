@@ -9,10 +9,19 @@ namespace coup
     {
     }
     void Duke::block(Player &p){
-        cout<<"block\n";
+        if (p.lastAction.compare("foreign_aid") == 0)
+        {
+            p.someOneBlockme();
+        }
+        else{
+            throw invalid_argument("you can't block this action");  
+        }
+        
     }
     void Duke::tax(){
-        cout<< "tax\n";
+        isMyTurn();
+        this->money += 3;
+        this->endMyTurn("tax");
     }
     void Duke::role(){
         cout<<"duke"<<endl;

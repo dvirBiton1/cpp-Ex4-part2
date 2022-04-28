@@ -2,7 +2,14 @@
 namespace coup{
     vector<string> Game::players()
     {
-        return this->playersList;
+        vector<string> names;
+        for(Player *p : playersList ){
+            if (p->isAlive)
+            {
+                names.push_back(p->name);
+            }  
+        }
+        return names;
     }
     string Game::turn()
     {
@@ -10,20 +17,27 @@ namespace coup{
         {
             throw runtime_error("their is no players in this game");
         }
-        i = i % playersList.size();
-        return this->playersList[this->i];
+        // i = i % playersList.size();
+        return this->playersList[i]->name;
     }
     string Game::winner()
     {
-        if (this->playersList.size() != 1)
+        if (this->players().size() != 1)
         {
-            throw runtime_error("their is no players in this game");
+            throw runtime_error("their is no winners in this game");
         }
-        i = i % playersList.size();
-        return this->playersList[this->i];
+        // i = i % playersList.size();
+        return this->players().at(0);
     }
-    void Game::addPlayer(string name){
-        this->playersList.push_back(name);
+    void Game::addPlayer(Player *p){
+        this->playersList.push_back(p);
+    }
+    void Game::nextTurn(){
+        do
+        {
+           this->i = (this->i+1) % this->playersList.size();
+        } while (this->playersList.at(i)->isAlive == false); 
+
     }
     Game::Game(/* args */)
     {

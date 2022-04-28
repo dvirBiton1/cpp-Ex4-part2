@@ -1,10 +1,10 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <stdexcept>
 #include <string>
 #include <algorithm>
-// #include "Player.hpp"
-#pragma once
+#include "Player.hpp"
 using namespace std;
 
 namespace coup
@@ -13,8 +13,8 @@ namespace coup
     class Game
     {
     private:
-        vector<string> playersList;
-
+        // vector<string> playersList;
+        vector<Player*> playersList;
     public:
         // vector<string> playersList;
         unsigned int i;
@@ -23,9 +23,10 @@ namespace coup
         //     this->i = 0;
         // };
         vector<string> players();
-        void addPlayer(string name);
+        void addPlayer(Player *p);
         string turn();
         string winner();
+        void nextTurn();
         // void addPlayer(player p);
         ~Game();
     };

@@ -10,6 +10,7 @@ namespace coup{
         Assassin(Game &game, string name);
         // int coinsduck();
         void block(Player &p);
+        void someOneBlockme();
         void role();
         ~Assassin();
     };

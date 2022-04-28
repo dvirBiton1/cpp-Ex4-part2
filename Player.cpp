@@ -9,21 +9,19 @@ namespace coup
 
     void Player::income()
     {
+        isMyTurn();
         this->money++;
-        this->game->i = (this->game->i + 1) % this->game->players().size();
+        this->endMyTurn("income");
     }
     void Player::foreign_aid()
     {
-        // if (this->name.compare(this->game->playersList[this->game->i]))
-        //     ;
-        // {
-        //     throw runtime_error("is not your turn!");
-        // }
+        isMyTurn();
         this->money += 2;
-        this->game->i = (this->game->i + 1) % this->game->players().size();
+        this->endMyTurn("foreign_aid");
     }
     void Player::coup(Player &p)
     {
+    isMyTurn();
     for (unsigned int i = 0; i < this->game->players().size(); i++)
     {
         if (!p.name.compare(this->game->players()[i]))
@@ -33,21 +31,40 @@ namespace coup
         }
     }
     throw invalid_argument("this player didn't exsict");
+    this->endMyTurn("coup");
     }
     void Player::role()
     {
-        cout << this->name;
+        cout << "virtual";
     }
     int Player::coins()
     {
         return this->money;
+    }
+
+    void Player::isMyTurn(){
+        // cout << game->turn() << "turn now\n";
+        if (this->name.compare(game->turn()))
+        {
+            throw runtime_error(this->name + " is not your turn!");
+        }
+        
+    }
+    void Player::someOneBlockme(){
+        
+            throw invalid_argument("you cant block this action");
+    }
+    void Player::endMyTurn(string last){
+        this->lastAction = last;
+        this->game->nextTurn();
     }
     Player::Player(Game &game, string name)
     {
         // game.addPlayer(this);
         this->name = name;
         this->game = &game;
-        this->game->addPlayer(this->name);
+        this->isAlive = 1;
+        this->game->addPlayer(this);
         this->money = 0;
     }
     Player::~Player()

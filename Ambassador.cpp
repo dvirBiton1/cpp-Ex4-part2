@@ -8,6 +8,7 @@ namespace coup{
     {
     }
     void Ambassador::transfer(Player &p1, Player &p2){
+        isMyTurn();
         cout << "transfer\n";
     }
     void Ambassador::role(){
