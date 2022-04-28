@@ -19,19 +19,16 @@ namespace coup
         this->money += 2;
         this->endMyTurn("foreign_aid");
     }
-    void Player::coup(Player &p)
-    {
-    isMyTurn();
-    for (unsigned int i = 0; i < this->game->players().size(); i++)
-    {
-        if (!p.name.compare(this->game->players()[i]))
+    void Player::coup(Player &p){
+        isMyTurn();
+        if (this->money < 7)
         {
-            this->game->players().erase(this->game->players().begin() + i);
-            return;
+            throw runtime_error("this Player havn't engoth money");
         }
-    }
-    throw invalid_argument("this player didn't exsict");
-    this->endMyTurn("coup");
+        p.isAlive = false;
+        money -= 7;
+        this->endMyTurn("coup");
+
     }
     void Player::role()
     {
@@ -51,8 +48,10 @@ namespace coup
         
     }
     void Player::someOneBlockme(){
-        
-            throw invalid_argument("you cant block this action");
+        if (this->lastAction.compare("foreign_aid") == 0)
+        {
+            this->money -= 2;
+        }
     }
     void Player::endMyTurn(string last){
         this->lastAction = last;

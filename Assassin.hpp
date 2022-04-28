@@ -5,11 +5,12 @@ namespace coup{
     class Assassin : public Player
     {
     private:
-        /* data */
+        Player *mordechaiTraget;
     public:
         Assassin(Game &game, string name);
         // int coinsduck();
         void block(Player &p);
+        void coup(Player &p);
         void someOneBlockme();
         void role();
         ~Assassin();

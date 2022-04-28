@@ -7,11 +7,10 @@ namespace coup{
     class Player
     {   
     protected:
-        
-        int money;
         Game *game;
         
     public:
+        int money;
         string name;
         bool isAlive;
         string lastAction;
@@ -27,7 +26,7 @@ namespace coup{
         int coins();
         void isMyTurn();
         void endMyTurn(string last);
-        void someOneBlockme();
+        virtual void someOneBlockme();
         ~Player();
     };
     

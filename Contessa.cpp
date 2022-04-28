@@ -8,7 +8,13 @@ namespace coup{
     {
     }
     void Contessa::block(Player &p){
-        cout<< "block\n";
+        if (p.lastAction.compare("kill") == 0)
+        {
+            p.someOneBlockme();
+        }
+        else{
+            throw invalid_argument("you can't block this action");  
+        }
     }
     void Contessa::role(){
         cout<<"Contessa"<<endl;

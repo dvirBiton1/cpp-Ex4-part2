@@ -77,49 +77,53 @@ int main() {
 	// // is foreign aid, which cannot be blocked by contessa
 	// contessa.block(assassin);
 
-	// duke.block(assassin);
-	// cout << assassin.coins() << endl; // prints 1
+	duke.block(assassin);
+	cout << assassin.coins() << endl; // prints 1
+	cout << duke.coins() << endl; // prints 2
+	cout << assassin.coins() << endl; // prints 1
 
-	// ambassador.transfer(duke, assassin); //transfers 1 coin from duke to assassin
-	// captain.foreign_aid();
-	// contessa.foreign_aid();
+	ambassador.transfer(duke, assassin); //transfers 1 coin from duke to assassin
+	cout << duke.coins() << endl; // prints 2
+	cout << assassin.coins() << endl; // prints 1
+	captain.foreign_aid();
+	contessa.foreign_aid();
 
-	// duke.tax();
-	// assassin.income();
-	// ambassador.foreign_aid();
-	// captain.steal(contessa);
-	// contessa.foreign_aid();
+	duke.tax();
+	assassin.income();
+	ambassador.foreign_aid();
+	captain.steal(contessa);
+	contessa.foreign_aid();
 
-	// duke.tax();
-	// // no exception, assassin can coup with only 3 coins
-	// assassin.coup(duke);
+	duke.tax();
+	// no exception, assassin can coup with only 3 coins
+	assassin.coup(duke);
 
-	// players = game_1.players();
-	// /*
-	// 	prints:
-	// 	Yossi
-	// 	Meirav
-	// 	Reut
-	// 	Gilad
+	players = game_1.players();
+	/*
+		prints:
+		Yossi
+		Meirav
+		Reut
+		Gilad
+	*/
+	for (string name : players)
+	{
+		cout << name << endl;
+	}
+	cout << assassin.lastAction<< endl;
+	contessa.block(assassin);
+
+	players = game_1.players();
+	/*
+		prints:
+		Moshe
+		Yossi
+		Meirav
+		Reut
+		Gilad
 	// */
-	// for (string name : players)
-	// {
-	// 	cout << name << endl;
-	// }
-
-	// contessa.block(assassin);
-
-	// players = game_1.players();
-	// /*
-	// 	prints:
-	// 	Moshe
-	// 	Yossi
-	// 	Meirav
-	// 	Reut
-	// 	Gilad
-	// // */
-	// for (string name : players)
-	// {
-	// 	cout << name << endl;
-	// }
+	for (string name : players)
+	{
+		cout << name << endl;
+	}
 }
