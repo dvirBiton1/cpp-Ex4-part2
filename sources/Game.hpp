@@ -18,6 +18,8 @@ namespace coup
     public:
         // vector<string> playersList;
         unsigned int i;
+        unsigned int numOfPlayers;
+        unsigned int gameStart;
         Game(/* args */);
         // {
         //     this->i = 0;

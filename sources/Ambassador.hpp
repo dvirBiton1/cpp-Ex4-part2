@@ -10,7 +10,7 @@ namespace coup{
         Ambassador(Game &game, string name);
         void transfer(Player &p1, Player &p2);
         void block(Player &p);
-        void role();
+        string role();
         ~Ambassador();
     };
     

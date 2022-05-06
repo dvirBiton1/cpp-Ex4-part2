@@ -10,7 +10,7 @@ namespace coup{
         Duke(Game &game, string name);
         // int coinsduck();
         void block(Player &p);
-        void role();
+        string role();
         void tax();
         ~Duke();
     };

@@ -22,7 +22,7 @@ namespace coup{
         void income();
         void foreign_aid();
         void coup(Player &p);
-        virtual void role();
+        virtual string role();
         int coins();
         void isMyTurn();
         void endMyTurn(string last);

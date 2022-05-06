@@ -8,7 +8,7 @@ namespace coup{
     public:
         Contessa(Game &game, string name);
         void block(Player &p);
-        void role();
+        string role();
         ~Contessa();
     };
     

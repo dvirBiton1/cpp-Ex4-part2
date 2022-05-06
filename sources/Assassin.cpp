@@ -8,8 +8,8 @@ namespace coup
     Assassin::~Assassin()
     {
     }
-    void Assassin::role(){
-        cout<<"Assassin"<<endl;
+    string Assassin::role(){
+        return "Assassin";
     }
     void Assassin::someOneBlockme(){
         if (this->lastAction.compare("foreign_aid") == 0)
@@ -26,15 +26,25 @@ namespace coup
     }
     void Assassin::coup(Player &p){
         isMyTurn();
+        if (p.isAlive == false)
+        {
+            throw runtime_error("this player is dead!");
+        }
         if (this->money < 3)
         {
             throw runtime_error("this Assassin havn't engoth money");
         }
         p.isAlive = false;
         this->mordechaiTraget = &p;
-        money -= 3;
-        this->endMyTurn("kill");
-
+        if (this->money >= 7)
+        {
+            money -= 7;
+            this->endMyTurn("coup");
+        }
+        else{
+            money -= 3;
+            this->endMyTurn("kill");
+        }
     }
         
 

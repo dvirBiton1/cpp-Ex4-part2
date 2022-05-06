@@ -14,17 +14,17 @@ namespace coup
             p.someOneBlockme();
         }
         else{
-            throw invalid_argument("you can't block this action");  
+            throw invalid_argument("you cantt block this action");  
         }
-        
     }
     void Duke::tax(){
         isMyTurn();
         this->money += 3;
         this->endMyTurn("tax");
     }
-    void Duke::role(){
-        cout<<"duke"<<endl;
+    string Duke::role(){
+        return "Duke";
+        
     }
 
 }

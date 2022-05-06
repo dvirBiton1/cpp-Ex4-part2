@@ -17,17 +17,26 @@ namespace coup{
         p2.money++;
         endMyTurn("transfer");
     }
-    void Ambassador::role(){
-        cout<<"Ambassador"<<endl;
+    string Ambassador::role(){
+        return "Ambassador";
     }
+
     void Ambassador::block(Player &p){
-        if (p.lastAction.compare("steal") == 0)
+        cout << p.lastAction << endl;
+        if (p.lastAction.compare("stealTwo") == 0)
+        {
+            p.someOneBlockme();
+        }
+        else if (p.lastAction.compare("stealOne") == 0)
+        {
+            p.someOneBlockme();
+        }
+        else if (p.lastAction.compare("steal") == 0)
         {
             p.someOneBlockme();
         }
         else{
-            throw invalid_argument("you can't block this action");  
+            throw invalid_argument("you cantt block this action");  
         }
-        
     }
 }

@@ -5,13 +5,15 @@ namespace coup{
     class Captain : public Player
     {
     private:
+    
+    int howMany;
     Player *pFrom;
     public:
         Captain(Game &game, string name);
         void block(Player &p);
         void someOneBlockme();
         void steal(Player &p);
-        void role();
+        string role();
         ~Captain();
     };
 

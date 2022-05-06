@@ -16,7 +16,7 @@ namespace coup{
             throw invalid_argument("you can't block this action");  
         }
     }
-    void Contessa::role(){
-        cout<<"Contessa"<<endl;
+    string Contessa::role(){
+        return "Contessa";
     }
 }

@@ -12,7 +12,7 @@ namespace coup{
         void block(Player &p);
         void coup(Player &p);
         void someOneBlockme();
-        void role();
+        string role();
         ~Assassin();
     };
 }
