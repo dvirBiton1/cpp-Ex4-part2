@@ -23,7 +23,7 @@ namespace coup{
         void foreign_aid();
         void coup(Player &p);
         virtual string role();
-        int coins();
+        int coins() const;
         void isMyTurn();
         void endMyTurn(string last);
         virtual void someOneBlockme();

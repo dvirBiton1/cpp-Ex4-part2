@@ -1,6 +1,6 @@
 #include "Contessa.hpp"
 namespace coup{
-    Contessa::Contessa(Game &game, string name) : Player(game, name)
+    Contessa::Contessa(Game &game, string name) : Player(game, move(name))
     {
     }
     
@@ -8,7 +8,8 @@ namespace coup{
     {
     }
     void Contessa::block(Player &p){
-        if (p.lastAction.compare("kill") == 0)
+        int k = p.lastAction.compare("kill");
+        if ( k == 0)
         {
             p.someOneBlockme();
         }

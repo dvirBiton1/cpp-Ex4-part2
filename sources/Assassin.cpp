@@ -1,8 +1,9 @@
 #include "Assassin.hpp"
 namespace coup
 {
-    Assassin::Assassin(Game &game, string name) : Player(game, name)
+    Assassin::Assassin(Game &game, string name) : Player(game, move(name))
     {
+        this->mordechaiTraget = NULL;
     }
 
     Assassin::~Assassin()
@@ -12,11 +13,13 @@ namespace coup
         return "Assassin";
     }
     void Assassin::someOneBlockme(){
-        if (this->lastAction.compare("foreign_aid") == 0)
+        int f = this->lastAction.compare("foreign_aid");
+        int k = this->lastAction.compare("kill");
+        if (f == 0)
         {
             this->money -= 2;
         }
-        else if (this->lastAction.compare("kill") == 0)
+        else if (k == 0)
         {
             this->mordechaiTraget->isAlive = true;
         }
@@ -26,23 +29,25 @@ namespace coup
     }
     void Assassin::coup(Player &p){
         isMyTurn();
-        if (p.isAlive == false)
+        const int seven = 7;
+        const int three = 3;
+        if (!p.isAlive)
         {
             throw runtime_error("this player is dead!");
         }
-        if (this->money < 3)
+        if (this->money < three)
         {
             throw runtime_error("this Assassin havn't engoth money");
         }
         p.isAlive = false;
         this->mordechaiTraget = &p;
-        if (this->money >= 7)
+        if (this->money >= seven)
         {
-            money -= 7;
+            money -= seven;
             this->endMyTurn("coup");
         }
         else{
-            money -= 3;
+            money -= three;
             this->endMyTurn("kill");
         }
     }

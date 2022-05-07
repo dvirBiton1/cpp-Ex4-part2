@@ -1,7 +1,7 @@
 #include "Duke.hpp"
 namespace coup
 {
-    Duke::Duke(Game &game, string name) : Player(game, name)
+    Duke::Duke(Game &game, string name) : Player(game, move(name))
     {
     }
 
@@ -9,8 +9,8 @@ namespace coup
     {
     }
     void Duke::block(Player &p){
-        if (p.lastAction.compare("foreign_aid") == 0)
-        {
+        int f = p.lastAction.compare("foreign_aid");
+        if (f == 0){
             p.someOneBlockme();
         }
         else{

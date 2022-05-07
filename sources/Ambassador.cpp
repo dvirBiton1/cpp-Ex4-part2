@@ -1,6 +1,6 @@
 #include "Ambassador.hpp"
 namespace coup{
-    Ambassador::Ambassador(Game &game, string name) : Player(game,name)
+    Ambassador::Ambassador(Game &game, string name) : Player(game,move(name))
     {
     }
     
@@ -22,17 +22,10 @@ namespace coup{
     }
 
     void Ambassador::block(Player &p){
-        cout << p.lastAction << endl;
-        if (p.lastAction.compare("stealTwo") == 0)
-        {
-            p.someOneBlockme();
-        }
-        else if (p.lastAction.compare("stealOne") == 0)
-        {
-            p.someOneBlockme();
-        }
-        else if (p.lastAction.compare("steal") == 0)
-        {
+        int s2 = p.lastAction.compare("stealTwo");
+        int s1 =p.lastAction.compare("stealOne");
+        int s = p.lastAction.compare("steal");
+        if ( s2== 0 || s1 == 0 || s == 0){
             p.someOneBlockme();
         }
         else{

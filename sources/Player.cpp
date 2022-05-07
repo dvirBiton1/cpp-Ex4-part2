@@ -16,7 +16,8 @@ namespace coup
     void Player::foreign_aid()
     {
         isMyTurn();
-        if (this->money > 10)
+        const int ten = 10;
+        if (this->money > ten)
         {
             throw runtime_error("you have too much coins");
         }
@@ -26,17 +27,18 @@ namespace coup
     }
     void Player::coup(Player &p){
         isMyTurn();
-        if (p.isAlive == false)
+        const int seven = 7;
+        if (!p.isAlive)
         {
             throw runtime_error("this player is dead");
         }
         
-        if (this->money < 7)
+        if (this->money < seven)
         {
             throw runtime_error("this Player havn't engoth money");
         }
         p.isAlive = false;
-        money -= 7;
+        money -= seven;
         this->endMyTurn("coup");
 
     }
@@ -44,21 +46,22 @@ namespace coup
     {
         return "virtual";
     }
-    int Player::coins()
-    {
+    int Player::coins() const{
         return this->money;
     }
 
     void Player::isMyTurn(){
         // cout << game->turn() << "turn now\n";
-        if (this->name.compare(game->turn()))
+        int x = this->name.compare(game->turn());
+        if (x != 0)
         {
             throw runtime_error(this->name + " is not your turn!");
         }
         
     }
     void Player::someOneBlockme(){
-        if (this->lastAction.compare("foreign_aid") == 0)
+        int f = this->lastAction.compare("foreign_aid");
+        if (f == 0)
         {
             this->money -= 2;
         }
@@ -67,23 +70,24 @@ namespace coup
         }
     }
     void Player::endMyTurn(string last){
-        this->lastAction = last;
+        this->lastAction = move(last);
         this->game->nextTurn();
     }
     Player::Player(Game &game, string name)
     {
         // game.addPlayer(this);
-        this->name = name;
+        const int six = 6;
+        this->name = move(name);
         this->game = &game;
-        if (this->game->gameStart)
+        if (this->game->gameStart == 1)
         {
             throw runtime_error("the game already start");
         }
-        if (this->game->numOfPlayers == 6)
+        if (this->game->numOfPlayers == six)
         {
             throw runtime_error("too many players");
         }
-        this->isAlive = 1;
+        this->isAlive = true;
         this->game->addPlayer(this);
         this->money = 0;
     }

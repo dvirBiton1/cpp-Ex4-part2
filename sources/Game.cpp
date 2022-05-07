@@ -13,7 +13,7 @@ namespace coup{
     }
     string Game::turn()
     {
-        if (this->playersList.size() == 0)
+        if (this->playersList.empty())
         {
             throw runtime_error("their is no players in this game");
         }
@@ -40,11 +40,13 @@ namespace coup{
         this->numOfPlayers++;
     }
     void Game::nextTurn(){
+        const int six = 6;
+        const int two = 2; 
         do
         {
            this->i = (this->i+1) % this->playersList.size();
-        } while (this->playersList.at(i)->isAlive == false);
-        if (this->numOfPlayers < 2 || this->numOfPlayers > 6 )
+        } while (!this->playersList.at(i)->isAlive);
+        if (this->numOfPlayers < two || this->numOfPlayers > six )
         {
             throw runtime_error("too much players");
         }

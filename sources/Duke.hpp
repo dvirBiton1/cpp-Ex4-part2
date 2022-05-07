@@ -9,7 +9,7 @@ namespace coup{
     public:
         Duke(Game &game, string name);
         // int coinsduck();
-        void block(Player &p);
+        static void block(Player &p);
         string role();
         void tax();
         ~Duke();
